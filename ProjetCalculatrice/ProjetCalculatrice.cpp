@@ -36,54 +36,65 @@ void ShowMenu();
 
 int main()
 {
-	ShowMenu();
-
 	int choix, exposant;
 	double nombre1, nombre2;
 
-	std::cin >> choix;
-
-	std::cout << "Donner un premier nombre :";
-
-	std:cin >> nombre1;
-
-	if (choix != 5)
+	while (true)
 	{
-		std::cout << "Donner un deuxième nombre :";
-		
-		std::cin >> nombre2;
+		ShowMenu();
+
+		std::cin >> choix;
+
+		if (choix == 6)
+		{
+			break;
+		}
+
+		std::cout << "Donner un premier nombre :";
+
+		std::cin >> nombre1;
+
+		if (choix != 5)
+		{
+			std::cout << "Donner un deuxieme nombre :";
+
+			std::cin >> nombre2;
+		}
+		else
+		{
+			std::cout << "Donner un exposant :";
+			std::cin >> exposant;
+		}
+
+		switch (choix)
+		{
+		case 1:
+			std::cout << nombre1 << " + " << nombre2 << " = " << addition(nombre1, nombre2) << std::endl;
+			break;
+
+		case 2:
+			std::cout << nombre1 << " - " << nombre2 << " = " << soustraction(nombre1, nombre2) << std::endl;
+			break;
+
+		case 3:
+			std::cout << nombre1 << " * " << nombre2 << " = " << multiplication(nombre1, nombre2) << std::endl;
+			break;
+
+		case 4:
+			std::cout << nombre1 << " / " << nombre2 << " = " << division(nombre1, nombre2) << std::endl;
+			break;
+
+		case 5:
+			std::cout << nombre1 << " ^ " << exposant << " = " << puissance(nombre1, exposant) << std::endl;
+			break;
+
+		case 6:
+			break;
+		}
+		system("pause");
+		system("cls");
 	}
-	else
-	{
-		std::cout << "Donner un exposant :";
-		std::cin >> exposant;
-	}
-
-	switch (choix)
-	{
-	case 1:
-		std::cout << addition(double nombre1, double nombre2);
-		break;
-
-	case 2:
-		std::cout << soustraction(double nombre1, double nombre2);
-		break;
-
-	case 3:
-		std::cout << multiplication(double nombre1, double nombre2);
-		break;
-
-	case 4:
-		std::cout << division(double nombre1, double nombre2);
-		break;
-
-	case 5:
-		std::cout << puissance(double nombre1, int exposant);
-		break;
-
-	case 6:
-		break;
-	}
+	return 0;
 }
 
 double addition(double nombre1, double nombre2)
@@ -124,5 +135,5 @@ void ShowMenu()
 	std::cout << "(4) Division" << std::endl;
 	std::cout << "(5) Puissance" << std::endl;
 	std::cout << "(6) Quitter" << std::endl;
-	std::cout << "Choisir une opération :";
+	std::cout << "Choisir une operation :";
 }
